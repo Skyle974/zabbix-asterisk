@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-09-30T12:27:44Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+        <group>
+            <name>Templates/Applications</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template App Asterisk</template>
+            <name>Template App Asterisk</name>
+            <description>Asterisk Monitoring by Skyle974 https://github.com/Skyle974/zabbix-asterisk</description>
+            <templates>
+                <template>
+                    <name>Template OS Linux by Zabbix agent</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+                <group>
+                    <name>Templates/Applications</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Asterisk</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Concurrent Active Calls</name>
+                    <key>check.asterisk[calls.active]</key>
+                    <history>30d</history>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(#3)}&gt;={$ACTIVE_CALLS_THRESHOLD}</expression>
+                            <name>{$ACTIVE_CALLS_THRESHOLD} concurrent active calls detected</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Longest Call (Channel)</name>
+                    <key>check.asterisk[calls.longest.channel]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Longest Call (Duration)</name>
+                    <key>check.asterisk[calls.longest.duration]</key>
+                    <history>30d</history>
+                    <units>uptime</units>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Processed Calls</name>
+                    <key>check.asterisk[calls.processed]</key>
+                    <history>30d</history>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Asterisk Last Reload</name>
+                    <key>check.asterisk[lastreload]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <units>uptime</units>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>PJSIP Endpoints Offline</name>
+                    <key>check.asterisk[pjsip.endpoints.offline]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>PJSIP Endpoints Online</name>
+                    <key>check.asterisk[pjsip.endpoints.online]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>PJSIP Trunk Offline</name>
+                    <key>check.asterisk[pjsip.trunks.offline]</key>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>PJSIP Trunk Online</name>
+                    <key>check.asterisk[pjsip.trunks.online]</key>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Asterisk Service Status</name>
+                    <key>check.asterisk[service.status]</key>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{str(Down,#1)}=1</expression>
+                            <name>Asterisk service DOWN</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>SIP Peers Offline</name>
+                    <key>check.asterisk[sip.peers.offline]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>SIP Peers Online</name>
+                    <key>check.asterisk[sip.peers.online]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>SIP Trunks Offline</name>
+                    <key>check.asterisk[sip.trunks.offline]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>SIP Trunks Online</name>
+                    <key>check.asterisk[sip.trunks.online]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Asterisk Uptime</name>
+                    <key>check.asterisk[systemuptime]</key>
+                    <delay>5m</delay>
+                    <history>30d</history>
+                    <units>uptime</units>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Asterisk Version</name>
+                    <key>check.asterisk[version]</key>
+                    <delay>60m</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Asterisk</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Discovery IAX2 Trunks</name>
+                    <key>discovery.asterisk[discovery.iax2.registry]</key>
+                    <delay>1h</delay>
+                    <status>DISABLED</status>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>IAX2 Trunk Status for {#USERNAME}@{#HOST}</name>
+                            <key>check.asterisk[iax2.registry,{#USERNAME}]</key>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{regexp(Registered,#3)}=0</expression>
+                                    <name>IAX2 Trunk not registered {#USERNAME}@{#HOST}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Discovery PJSIP Endpoints</name>
+                    <key>discovery.asterisk[discovery.pjsip.endpoint]</key>
+                    <delay>1h</delay>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>PJSIP Endpoints CallerId for {#ENDPOINT}</name>
+                            <key>check.asterisk[pjsip.endpoint.callerid,{#ENDPOINT}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>PJSIP Endpoints RTT for {#ENDPOINT}</name>
+                            <key>check.asterisk[pjsip.endpoint.rtt,{#ENDPOINT}]</key>
+                            <value_type>FLOAT</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>PJSIP Endpoints State for {#ENDPOINT}</name>
+                            <key>check.asterisk[pjsip.endpoint.state,{#ENDPOINT}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>PJSIP Endpoints Use State for {#ENDPOINT}</name>
+                            <key>check.asterisk[pjsip.endpoint.usestate,{#ENDPOINT}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>PJSIP Endpoints RTT for {#ENDPOINT}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>Template App Asterisk</host>
+                                        <key>check.asterisk[pjsip.endpoint.rtt,{#ENDPOINT}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Discovery PJSIP Trunks</name>
+                    <key>discovery.asterisk[discovery.pjsip.registry]</key>
+                    <delay>1h</delay>
+                    <status>DISABLED</status>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>PJSIP Trunk Status for {#ENDPOINT}/sip:{#USERNAME}@{#HOST}</name>
+                            <key>check.asterisk[pjsip.registry,{#ENDPOINT}]</key>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{regexp(Avail|Registered,#3)}=0</expression>
+                                    <name>PJSIP Trunk not registered {#ENDPOINT}/sip:{#USERNAME}@{#HOST}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Discovery SIP Trunks</name>
+                    <key>discovery.asterisk[discovery.sip.registry]</key>
+                    <delay>1h</delay>
+                    <status>DISABLED</status>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>SIP Trunk Status for {#USERNAME}@{#HOST}</name>
+                            <key>check.asterisk[sip.registry,{#USERNAME}]</key>
+                            <history>30d</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>Asterisk</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{regexp(Registered,#3)}=0</expression>
+                                    <name>SIP Trunk not registered {#USERNAME}@{#HOST}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$ACTIVE_CALLS_THRESHOLD}</macro>
+                    <value>20</value>
+                    <description>Alarm when reaching max active calls threshold</description>
+                </macro>
+                <macro>
+                    <macro>{$LOGENST_CALL_DURATION}</macro>
+                    <value>7200</value>
+                    <description>Alarm when reaching call duration time</description>
+                </macro>
+            </macros>
+            <screens>
+                <screen>
+                    <name>Asterisk</name>
+                    <hsize>3</hsize>
+                    <vsize>4</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>CPU utilization</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Memory utilization</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>600</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>3</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <key>check.asterisk[service.status]</key>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>2</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>1</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Concurrent Active Calls</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>PJSIP Trunk Status</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>3</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <key>check.asterisk[lastreload]</key>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>2</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>5</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>PJSIP Endpoints Status</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>3</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <key>check.asterisk[calls.processed]</key>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>2</x>
+                            <y>2</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>1</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>3</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>Interface {#IFNAME}: Network traffic</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>3</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>1</max_columns>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <style>0</style>
+                            <resource>
+                                <name>{#FSNAME}: Disk space usage</name>
+                                <host>Template App Asterisk</host>
+                            </resource>
+                            <width>500</width>
+                            <height>340</height>
+                            <x>1</x>
+                            <y>3</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>1</valign>
+                            <halign>0</halign>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <url/>
+                            <application/>
+                            <max_columns>1</max_columns>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+                <screen>
+                    <name>Endpoints Status</name>
+                    <hsize>1</hsize>
+                    <vsize>1</vsize>
+                </screen>
+            </screens>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template App Asterisk:check.asterisk[calls.longest.channel].str()}=1&#13;
+and&#13;
+{Template App Asterisk:check.asterisk[calls.longest.duration].last()}&gt;={$LOGENST_CALL_DURATION}</expression>
+            <name>Call {ITEM.VALUE1} potentially stuck for {ITEM.VALUE2}</name>
+            <priority>WARNING</priority>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <name>Concurrent Active Calls</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template App Asterisk</host>
+                        <key>check.asterisk[calls.active]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>PJSIP Endpoints Status</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template App Asterisk</host>
+                        <key>check.asterisk[pjsip.endpoints.offline]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template App Asterisk</host>
+                        <key>check.asterisk[pjsip.endpoints.online]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>PJSIP Trunk Status</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Template App Asterisk</host>
+                        <key>check.asterisk[pjsip.trunks.offline]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Template App Asterisk</host>
+                        <key>check.asterisk[pjsip.trunks.online]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
