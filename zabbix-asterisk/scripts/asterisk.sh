@@ -106,13 +106,13 @@ calls.processed() {
 
 calls.longest.channel() {
   # grab only latest call duration in seconds
-  channel="$($sudo asterisk -rx 'core show channels concise' | cut -d'!' -f1 | sed 's/!/ /g' | grep -v 'Message/ast_msg_queue' | tail -1)"
+  channel="$($sudo asterisk -rx 'core show channels concise' | grep -v 'Message/ast_msg_queue' | cut -d'!' -f1 | sed 's/!/ /g' | tail -1)"
   [ -z "$channel" ] && echo 0 || echo "$channel"
 }
 
 calls.longest.duration() {
   # grab only latest call duration in seconds
-  duration="$($sudo asterisk -rx 'core show channels concise' | cut -d'!' -f12 | sed 's/!/ /g' | grep -v 'Message/ast_msg_queue' | tail -1)"
+  duration="$($sudo asterisk -rx 'core show channels concise' | grep -v 'Message/ast_msg_queue' | cut -d'!' -f12 | sed 's/!/ /g' | tail -1)"
   [ -z "$duration" ] && echo 0 || echo "$duration"
 }
 
